@@ -69,5 +69,14 @@ GitHub:
 https://github.com/yagmuryesilkaya318-code
 
 ---
+## 🌐 Live Demo
+
+🔗 https://yagmuryesilkaya318-code.github.io/lezzet_diyari/
+
+---
+
+## 🎥 Demo Video
+
+📺 https://youtu.be/cdFqzMqe6s4?si=Y2G5__-CDDGO85cT
 
 ⭐ If you like this project, don't forget to give it a star.
