@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lezzet Diyarı | Damak Tadınızın Tek Adresi</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* ANA RENK PALETİ VE TASARIM */
+        :root {
+            --pembe: #ff6b81; /* Ana renk - Pembe */
+            --yesil: #2ecc71;  /* Vurgu rengi - Yeşil */
+            --koyu: #2c3e50;
+        }
+
+        body { font-family: 'Poppins', sans-serif; background-color: #f8f9fa; scroll-behavior: smooth; }
+        
+        /* Navigasyon & BÜYÜK VE RENKLİ LOGO */
+        .navbar-brand { 
+            font-weight: 700; 
+            font-size: 2.5rem; /* Büyük logo */
+            letter-spacing: -1.5px;
+            text-decoration: none;
+        }
+        
+        .logo-lezzet { color: var(--pembe) !important; }
+        .logo-diyari { color: var(--yesil) !important; }
+
+        .nav-link { font-weight: 500; margin: 0 10px; color: var(--koyu) !important; }
+        .nav-link:hover { color: var(--pembe) !important; }
+
+        .btn-sepet {
+            background-color: var(--yesil);
+            border-color: var(--yesil);
+            color: white;
+            font-weight: 600;
+        }
+        .btn-sepet:hover {
+            background-color: #27ae60;
+            border-color: #27ae60;
+            color: white;
+        }
+
+        /* Hero / Giriş Bölümü */
+        .hero-section {
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=1600');
+            background-size: cover;
+            background-position: center;
+            height: 70vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            margin-bottom: 50px;
+        }
+        
+        .btn-hero {
+            background-color: var(--pembe);
+            border-color: var(--pembe);
+            color: white;
+        }
+        .btn-hero:hover {
+            background-color: #ff4757;
+            border-color: #ff4757;
+            color: white;
+        }
+
+        /* Menü Tasarımı */
+        .card-img-top { height: 200px; object-fit: cover; }
+        
+        .nav-pills .nav-link.active { background-color: var(--pembe) !important; }
+        .nav-link-menu { color: var(--koyu); background-color: white; }
+        .nav-link-menu:hover { color: var(--pembe); }
+
+        .card { transition: 0.3s; border: none; border-radius: 20px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); }
+        .card:hover { transform: translateY(-10px); box-shadow: 0 15px 30px rgba(0,0,0,0.1); }
+        
+        /* Kart Butonları (Yeşil Kenarlı) */
+        .btn-kart {
+            border-color: var(--yesil);
+            color: var(--yesil);
+        }
+        .btn-kart:hover {
+            background-color: var(--yesil);
+            border-color: var(--yesil);
+            color: white;
+        }
+        
+        /* Fiyat Rengi (Pembe) */
+        .text-fiyat { color: var(--pembe) !important; font-weight: 700; }
+
+        /* İletişim / Footer */
+        footer { background-color: var(--koyu); color: white; padding: 60px 0 30px; }
+        
+        .footer-logo { color: var(--pembe) !important; font-weight: 700; font-size: 1.5rem; }
+        .footer-link { color: #ecf0f1; text-decoration: none; transition: 0.3s; }
+        .footer-link:hover { color: var(--pembe); }
+       
+        .iletisim-ikon { color: var(--yesil) !important; }
+        
+        /* Sepet Yan Paneli */
+        .delete-btn { color: #e74c3c; cursor: pointer; transition: 0.2s; }
+        .delete-btn:hover { transform: scale(1.2); color: #c0392b; }
+        .kupon-area { background: #fff5f6; border-radius: 12px; padding: 15px; border: 1px solid #ffebee; }
+        
+        .btn-onay {
+            background-color: var(--yesil);
+            border-color: var(--yesil);
+            color: white;
+            font-weight: 700;
+        }
+        .btn-onay:hover {
+            background-color: #27ae60;
+            border-color: #27ae60;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm sticky-top">
+    <div class="container">
+        <a class="navbar-brand" href="#">
+            <span class="logo-lezzet">LEZZET</span> <span class="logo-diyari">DİYARI</span>
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav mx-auto">
+                <li class="nav-item"><a class="nav-link" href="#">Ana Sayfa</a></li>
+                <li class="nav-item"><a class="nav-link" href="#menu-bolumu">Menü</a></li>
+                <li class="nav-item"><a class="nav-link" href="#iletisim">İletişim</a></li>
+            </ul>
+            <button class="btn btn-sepet rounded-pill px-4 shadow-sm" type="button" data-bs-toggle="offcanvas" data-bs-target="#sepetim">
+                <i class="fas fa-shopping-basket me-2"></i>Sepetim (<span id="sepet-sayaci">0</span>)
+            </button>
+        </div>
+    </div>
+</nav>
+
+<header class="hero-section">
+    <div class="container">
+        <h1 class="display-2 fw-bold mb-3 text-white">Lezzet Diyarı'na Hoş Geldiniz</h1>
+        <p class="lead fs-4 mb-4">Taze malzemeler, pembe enerji ve yeşil tazelikle buluşuyor.</p>
+        <a href="#menu-bolumu" class="btn btn-hero btn-lg rounded-pill px-5 py-3 shadow">Menüyü Keşfet</a>
+    </div>
+</header>
+
+<div class="container my-5" id="menu-bolumu">
+    <div class="text-center mb-5">
+        <h2 class="fw-bold display-5">Özel Menümüz</h2>
+        <div class="mx-auto mt-2" style="width: 80px; height: 4px; border-radius: 2px; background-color: var(--yesil);"></div>
+    </div>
+
+    <div class="text-center mb-5">
+        <ul class="nav nav-pills justify-content-center shadow-sm p-2 bg-white rounded-pill d-inline-flex mx-auto" id="pills-tab" role="tablist">
+            <li class="nav-item"><button class="nav-link nav-link-menu active" data-bs-toggle="pill" data-bs-target="#pills-burger" type="button">🍔 Burgerler</button></li>
+            <li class="nav-item"><button class="nav-link nav-link-menu" data-bs-toggle="pill" data-bs-target="#pills-pizza" type="button">🍕 Pizzalar</button></li>
+            <li class="nav-item"><button class="nav-link nav-link-menu" data-bs-toggle="pill" data-bs-target="#pills-icecek" type="button">🥤 İçecekler</button></li>
+            <li class="nav-item"><button class="nav-link nav-link-menu" data-bs-toggle="pill" data-bs-target="#pills-tatli" type="button">🍰 Tatlılar</button></li>
+        </ul>
+    </div>
+
+    <div class="tab-content">
+        <div class="tab-pane fade show active" id="pills-burger" role="tabpanel"><div class="row g-4" id="burger-listesi"></div></div>
+        <div class="tab-pane fade" id="pills-pizza" role="tabpanel"><div class="row g-4" id="pizza-listesi"></div></div>
+        <div class="tab-pane fade" id="pills-icecek" role="tabpanel"><div class="row g-4" id="icecek-listesi"></div></div>
+        <div class="tab-pane fade" id="pills-tatli" role="tabpanel"><div class="row g-4" id="tatli-listesi"></div></div>
+    </div>
+</div>
+
+<!-- Dinamik Malzeme Özelleştirme Modali -->
+<div class="modal fade" id="ozellestirmeModali" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content rounded-4 shadow">
+            <div class="modal-header border-bottom-0 pb-0">
+                <h5 class="modal-title fw-bold" id="modalUrunAdi">Ürünü Özelleştir</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body py-4">
+                <div id="modalMalzemeAlani">
+                    <!-- Dinamik içerik buraya gelecek -->
+                </div>
+                <hr class="my-4 opacity-25">
+                <div class="d-flex justify-content-between align-items-center">
+                    <span class="fw-bold fs-5 text-dark">Toplam Tutar:</span>
+                    <span id="modalDinamikFiyat" class="text-fiyat fs-3">0 TL</span>
+                </div>
+            </div>
+            <div class="modal-footer border-0 pt-0">
+                <button type="button" class="btn btn-onay w-100 rounded-pill py-3 shadow" id="modalSepeteEkleBtn">Seçimlerle Sepete Ekle</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<footer id="iletisim">
+    <div class="container">
+        <div class="row g-4">
+            <div class="col-md-4">
+                <h4 class="fw-bold mb-4 footer-logo">LEZZET DİYARI</h4>
+                <p>Şehrin kalbinde, en taze malzemeler ve pembe bir gülümsemeyle hazırlanan reçetelerimizle hizmetinizdeyiz.</p>
+                <div class="mt-4">
+                    <a href="#" class="btn btn-outline-light btn-sm rounded-circle me-2"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="btn btn-outline-light btn-sm rounded-circle me-2"><i class="fab fa-facebook"></i></a>
+                    <a href="#" class="btn btn-outline-light btn-sm rounded-circle"><i class="fab fa-twitter"></i></a>
+                </div>
+            </div>
+            <div class="col-md-4 px-md-5">
+                <h4 class="fw-bold mb-4 text-white">Hızlı Erişim</h4>
+                <ul class="list-unstyled">
+                    <li class="mb-2"><a href="#" class="footer-link">Ana Sayfa</a></li>
+                    <li class="mb-2"><a href="#menu-bolumu" class="footer-link">Menü</a></li>
+                    <li class="mb-2"><a href="#" class="footer-link">Hakkımızda</a></li>
+                </ul>
+            </div>
+            <div class="col-md-4">
+                <h4 class="fw-bold mb-4 text-white">İletişim Bilgileri</h4>
+                <p><i class="fas fa-map-marker-alt me-3 iletisim-ikon"></i> Lezzet Caddesi No:123, İstanbul</p>
+                <p><i class="fas fa-phone me-3 iletisim-ikon"></i> +90 212 555 00 00</p>
+                <p><i class="fas fa-envelope me-3 iletisim-ikon"></i> merhaba@lezzetdiyari.com</p>
+            </div>
+        </div>
+        <hr class="mt-5 mb-4 opacity-25">
+        <p class="text-center mb-0 opacity-50">&copy; 2026 Lezzet Diyarı - Tüm Hakları Saklıdır.</p>
+    </div>
+</footer>
+
+<div class="offcanvas offcanvas-end" tabindex="-1" id="sepetim">
+    <div class="offcanvas-header border-bottom">
+        <h5 class="offcanvas-title fw-bold">🛒 Sepetiniz</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
+    </div>
+    <div class="offcanvas-body d-flex flex-column">
+        <ul class="list-group list-group-flush mb-auto" id="sepet-icerik"></ul>
+        <div id="sepet-bos-mesaj" class="text-center py-5">
+            <p class="text-muted">Sepetiniz şu an boş.</p>
+        </div>
+        <div class="border-top pt-3 mt-3">
+            <div class="kupon-area mb-3 text-center">
+                <div class="input-group input-group-sm mb-1">
+                    <input type="text" id="kupon-input" class="form-control" placeholder="Kupon: LEZZET20">
+                    <button class="btn btn-dark" onclick="kuponUygula()">Uygula</button>
+                </div>
+                <small id="kupon-mesaj" class="text-success d-none fw-bold"> <i class="fas fa-check"></i> %20 İndirim Uygulandı!</small>
+            </div>
+            <div class="d-flex justify-content-between fs-5 fw-bold mb-3">
+                <span>Toplam:</span>
+                <span id="toplam-tutar" class="text-fiyat">0 TL</span>
+            </div>
+            <button class="btn btn-onay w-100 rounded-pill py-3 shadow-lg" onclick="alert('Siparişiniz Lezzet Diyarı mutfağına ulaştı!')">SİPARİŞİ ONAYLA</button>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+<script>
+    // Ürünlerin İçerik Yapısını Detaylandırdık
+    const burgerler = [
+        { 
+            ad: "Klasik Burger", fiyat: 360, img: "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=500",
+            malzemeler: [{ad: "Dana Köfte", fiyatEtkisi: -40}, {ad: "Marul", fiyatEtkisi: -10}, {ad: "Turşu", fiyatEtkisi: -10}],
+            ekstralar: [{ad: "Ekstra Çedar Peyniri", fiyatEtkisi: 30}, {ad: "Ekstra Dana Füme", fiyatEtkisi: 55}]
+        },
+        { 
+            ad: "Cheese Explosion", fiyat: 410, img: "https://images.unsplash.com/photo-1550547660-d9450f859349?w=500",
+            malzemeler: [{ad: "Dana Köfte", fiyatEtkisi: -40}, {ad: "Yoğun Çedar Sos", fiyatEtkisi: -35}, {ad: "Karamelize Soğan", fiyatEtkisi: -15}],
+            ekstralar: [{ad: "Ekstra Çıtır Soğan", fiyatEtkisi: 20}, {ad: "Ekstra Jalapeno Biberi", fiyatEtkisi: 15}]
+        },
+        { ad: "Smoky BBQ", fiyat: 435, img: "https://images.unsplash.com/photo-1594212699903-ec8a3eca50f5?w=500", malzemeler: [{ad: "BBQ Sos", fiyatEtkisi: -15}], ekstralar: [{ad: "Ekstra Sos", fiyatEtkisi: 15}] },
+        { ad: "Hot & Spicy", fiyat: 390, img: "https://images.unsplash.com/photo-1525164286253-04e68b9d94bb?w=500", malzemeler: [{ad: "Acı Sos", fiyatEtkisi: -15}], ekstralar: [{ad: "Ekstra Jalapeno", fiyatEtkisi: 15}] },
+        { ad: "Mushroom Swiss", fiyat: 445, img: "https://images.unsplash.com/photo-1512152272829-e3139592d56f?w=500", malzemeler: [{ad: "Sote Mantar", fiyatEtkisi: -30}], ekstralar: [{ad: "Ekstra Peynir", fiyatEtkisi: 30}] },
+        { ad: "Veggie Delight", fiyat: 350, img: "https://images.unsplash.com/photo-1520201163981-8cc95007dd2a?w=500", malzemeler: [{ad: "Sebze Köftesi", fiyatEtkisi: -30}], ekstralar: [{ad: "Ekstra Avokado Sos", fiyatEtkisi: 35}] },
+        { ad: "Avocado Chicken", fiyat: 385, img: "https://images.unsplash.com/photo-1615485245453-9f23d1709f5b?w=500", malzemeler: [{ad: "Tavuk Fileto", fiyatEtkisi: -35}], ekstralar: [{ad: "Ekstra Pastırma", fiyatEtkisi: 60}] },
+        { ad: "Steakhouse Burger", fiyat: 520, img: "https://images.unsplash.com/photo-1551782450-a2132b4ba21d?w=500", malzemeler: [{ad: "Antrikot Dilimleri", fiyatEtkisi: -70}], ekstralar: [{ad: "Ekstra Sos", fiyatEtkisi: 20}] }
+    ];
+
+    const pizzalar = [
+        { 
+            ad: "Margarita Pizza", fiyat: 450, img: "https://images.unsplash.com/photo-1513104890138-7c749659a591?w=500",
+            malzemeler: [{ad: "Mozzarella Peyniri", fiyatEtkisi: -50}, {ad: "Fesleğen", fiyatEtkisi: -10}],
+            ekstralar: [{ad: "Ekstra Kenar Peyniri", fiyatEtkisi: 45}, {ad: "Mısır", fiyatEtkisi: 20}]
+        },
+        { ad: "Pepperoni Pizza", fiyat: 490, img: "https://images.unsplash.com/photo-1628840042765-356cda07504e?w=500", malzemeler: [{ad: "Pepperoni", fiyatEtkisi: -45}], ekstralar: [{ad: "Zeytin", fiyatEtkisi: 20}] },
+        { ad: "Karışık Pizza", fiyat: 520, img: "https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=500", malzemeler: [{ad: "Sucuk", fiyatEtkisi: -30}, {ad: "Mantar", fiyatEtkisi: -15}], ekstralar: [{ad: "Sosis", fiyatEtkisi: 25}] },
+        { ad: "Dört Peynirli", fiyat: 510, img: "https://images.unsplash.com/photo-1573821663912-56990544c381?w=500", malzemeler: [{ad: "Rokfor Peyniri", fiyatEtkisi: -30}], ekstralar: [{ad: "Kekik", fiyatEtkisi: 10}] },
+        { ad: "Mantarlı Pizza", fiyat: 470, img: "https://images.unsplash.com/photo-1571407970349-bc81e7e96d47?w=500", malzemeler: [{ad: "Kültür Mantarı", fiyatEtkisi: -25}], ekstralar: [{ad: "Biber", fiyatEtkisi: 15}] },
+        { ad: "Akdeniz Sebzeli", fiyat: 460, img: "https://images.unsplash.com/photo-1541745537411-b8046dc6d66c?w=500", malzemeler: [{ad: "Enginar Kalbi", fiyatEtkisi: -25}], ekstralar: [{ad: "Beyaz Peynir", fiyatEtkisi: 30}] }
+    ];
+
+    const icecekler = [
+        { ad: "Limonata", fiyat: 120, img: "https://images.unsplash.com/photo-1513558161293-cdaf765ed2fd?w=500", malzemeler: [{ad: "Nane", fiyatEtkisi: -10}], ekstralar: [{ad: "Ekstra Buz", fiyatEtkisi: 5}] },
+        { ad: "Portakal Suyu", fiyat: 140, img: "https://images.unsplash.com/photo-1613478223719-2ab80260f423?w=500" },
+        { ad: "Ayran", fiyat: 60, img: "https://images.unsplash.com/photo-1626125394229-37e1931da703?w=500" },
+        { ad: "Coca Cola", fiyat: 80, img: "https://images.unsplash.com/photo-1622483767028-3f66f32aef97?w=500" },
+        { ad: "Milkshake", fiyat: 180, img: "https://images.unsplash.com/photo-1572490122747-3968b75cc699?w=500", ekstralar: [{ad: "Krema", fiyatEtkisi: 20}] },
+        { ad: "Iced Latte", fiyat: 160, img: "https://images.unsplash.com/photo-1517701550921dba5?w=500", ekstralar: [{ad: "Karamel Şurubu", fiyatEtkisi: 25}] },
+        { ad: "Smoothie", fiyat: 190, img: "https://images.unsplash.com/photo-1502741224143-90386d7f8c82?w=500" },
+        { ad: "Türk Kahvesi", fiyat: 95, img: "https://images.unsplash.com/photo-1544787210-282aa0bc7b00?w=500" },
+        { ad: "Buzlu Çay", fiyat: 80, img: "https://images.unsplash.com/photo-1556679343-c7306c1976bc?w=500" },
+        { ad: "Maden Suyu", fiyat: 45, img: "https://images.unsplash.com/photo-1551024709-8f23befc6f87?w=500" }
+    ];
+
+    const tatlilar = [
+        { ad: "Sufle", fiyat: 180, img: "https://images.unsplash.com/photo-1579954115545-a95591f28bfc?w=500", ekstralar: [{ad: "1 Top Dondurma", fiyatEtkisi: 40}] },
+        { ad: "Magnolia", fiyat: 165, img: "https://images.unsplash.com/photo-1488477181946-6428a0291777?w=500", malzemeler: [{ad: "Muz Dilimleri", fiyatEtkisi: -20}] },
+        { ad: "Tiramisu", fiyat: 195, img: "https://images.unsplash.com/photo-1571877227200-a0d98ea607e9?w=500" },
+        { ad: "Fırın Sütlaç", fiyat: 140, img: "https://images.unsplash.com/photo-1590080875515-8a3a8dc5735e?w=500", ekstralar: [{ad: "Fındık İçi", fiyatEtkisi: 20}] },
+        { ad: "San Sebastian", fiyat: 220, img: "https://images.unsplash.com/photo-1533134242443-d4fd215305ad?w=500", ekstralar: [{ad: "Ekstra Çikolata Sosu", fiyatEtkisi: 30}] },
+        { ad: "Waffle", fiyat: 250, img: "https://images.unsplash.com/photo-1562329265-95a6d7a83440?w=500", malzemeler: [{ad: "Çilek", fiyatEtkisi: -20}], ekstralar: [{ad: "Antep Fıstığı", fiyatEtkisi: 35}] },
+        { ad: "Dondurma", fiyat: 120, img: "https://images.unsplash.com/photo-1501443762994-82bd5dace89a?w=500" },
+        { ad: "Mozaik Pasta", fiyat: 150, img: "https://images.unsplash.com/photo-1606313564200-e75d5e30476c?w=500" }
+    ];
+
+    let sepet = [];
+    let indirimOrani = 0;
+    let seciliUrun = null;
+    let guncelModalFiyati = 0;
+
+    function urunleriYukle(liste, containerId) {
+        const container = document.getElementById(containerId);
+        container.innerHTML = ''; // Temizleyip yükleyelim
+        liste.forEach(item => {
+            container.innerHTML += `
+                <div class="col-md-4 col-sm-6">
+                    <div class="card h-100 border-0">
+                        <img src="${item.img}" class="card-img-top rounded-top-4">
+                        <div class="card-body p-4 text-center">
+                            <h5 class="fw-bold text-dark">${item.ad}</h5>
+                            <span class="text-fiyat fs-5 d-block mb-3">${item.fiyat} TL</span>
+                            <button class="btn btn-kart w-100 rounded-pill" onclick="özellestirmeAç('${item.ad}', ${item.fiyat})">Sepete Ekle</button>
+                        </div>
+                    </div>
+                </div>`;
+        });
+    }
+
+    // Kullanıcı butona bastığında modalı açacak tetikleyici
+    function özellestirmeAç(ad, fiyat) {
+        const tumUrunler = [...burgerler, ...pizzalar, ...icecekler, ...tatlilar];
+        const orjinalUrun = tumUrunler.find(u => u.ad === ad);
+        
+        // Derin kopyalama ile veriyi bağımsızlaştırıyoruz
+        seciliUrun = JSON.parse(JSON.stringify(orjinalUrun));
+        
+        if(!seciliUrun.malzemeler) seciliUrun.malzemeler = [];
+        if(!seciliUrun.ekstralar) seciliUrun.ekstralar = [];
+
+        guncelModalFiyati = fiyat;
+        document.getElementById('modalUrunAdi').innerText = seciliUrun.ad;
+        
+        modalIcerikOlustur();
+        
+        const modal = new bootstrap.Modal(document.getElementById('ozellestirmeModali'));
+        modal.show();
+    }
+
+    // Modal içerisindeki Checkbox listelerini basan fonksiyon
+    function modalIcerikOlustur() {
+        const alan = document.getElementById('modalMalzemeAlani');
+        alan.innerHTML = '';
+        
+        if(seciliUrun.malzemeler.length === 0 && seciliUrun.ekstralar.length === 0) {
+            alan.innerHTML = '<p class="text-muted text-center my-3">Bu ürün için malzeme özelleştirmesi bulunmuyor.</p>';
+            modalFiyatiniGuncelle();
+            return;
+        }
+
+        // Standart Malzemeler (Eksiltilebilir)
+        if(seciliUrun.malzemeler.length > 0) {
+            alan.innerHTML += '<h6 class="fw-bold text-dark mb-3"><i class="fas fa-minus-circle text-danger me-2"></i>Çıkarılabilecek Malzemeler:</h6>';
+            seciliUrun.malzemeler.forEach((m, index) => {
+                alan.innerHTML += `
+                    <div class="form-check mb-2 d-flex justify-content-between align-items-center">
+                        <div>
+                            <input class="form-check-input" type="checkbox" checked id="std-${index}" onchange="fiyatHesapla()">
+                            <label class="form-check-label text-dark ms-2" for="std-${index}">${m.ad}</label>
+                        </div>
+                        <small class="text-danger fw-semibold">(${m.fiyatEtkisi} TL)</small>
+                    </div>`;
+            });
+        }
+        
+        if(seciliUrun.malzemeler.length > 0 && seciliUrun.ekstralar.length > 0) alan.innerHTML += '<hr class="my-3 opacity-25">';
+
+        // Ekstra Malzemeler (Eklenebilir)
+        if(seciliUrun.ekstralar.length > 0) {
+            alan.innerHTML += '<h6 class="fw-bold text-dark mb-3"><i class="fas fa-plus-circle text-success me-2"></i>Ekstra Malzemeler:</h6>';
+            seciliUrun.ekstralar.forEach((e, index) => {
+                alan.innerHTML += `
+                    <div class="form-check mb-2 d-flex justify-content-between align-items-center">
+                        <div>
+                            <input class="form-check-input" type="checkbox" id="eks-${index}" onchange="fiyatHesapla()">
+                            <label class="form-check-label text-dark ms-2" for="eks-${index}">${e.ad}</label>
+                        </div>
+                        <small class="text-success fw-semibold">(+${e.fiyatEtkisi} TL)</small>
+                    </div>`;
+            });
+        }
+        
+        fiyatHesapla();
+    }
+
+    // Seçim durumuna göre anlık dinamik fiyatı hesaplayan algoritma
+    function fiyatHesapla() {
+        let yeniFiyat = seciliUrun.fiyat;
+        
+        seciliUrun.malzemeler.forEach((m, i) => {
+            const cb = document.getElementById(`std-${i}`);
+            if (cb && !cb.checked) {
+                yeniFiyat += m.fiyatEtkisi; // Fiyat etkisi negatif olduğu için düşecektir.
+            }
+        });
+        
+        seciliUrun.ekstralar.forEach((e, i) => {
+            const cb = document.getElementById(`eks-${i}`);
+            if (cb && cb.checked) {
+                yeniFiyat += e.fiyatEtkisi; // Pozitif değer ekler.
+            }
+        });
+        
+        guncelModalFiyati = yeniFiyat;
+        modalFiyatiniGuncelle();
+    }
+
+    function modalFiyatiniGuncelle() {
+        document.getElementById('modalDinamikFiyat').innerText = guncelModalFiyati + " TL";
+    }
+
+    // Modal Onay Buton Yapısı
+    document.getElementById('modalSepeteEkleBtn').onclick = function() {
+        let cikarilanlar = [];
+        let eklenenler = [];
+        
+        seciliUrun.malzemeler.forEach((m, i) => {
+            const cb = document.getElementById(`std-${i}`);
+            if(cb && !cb.checked) cikarilanlar.push(m.ad);
+        });
+        seciliUrun.ekstralar.forEach((e, i) => {
+            const cb = document.getElementById(`eks-${i}`);
+            if(cb && cb.checked) eklenenler.push(e.ad);
+        });
+        
+        // Sepet ismini özelleştirelim
+        let detayMetni = "";
+        if(cikarilanlar.length > 0) detayMetni += ` [Çıkarılan: ${cikarilanlar.join(', ')}]`;
+        if(eklenenler.length > 0) detayMetni += ` [Ekstra: ${eklenenler.join(', ')}]`;
+        
+        sepet.push({
+            id: Date.now() + Math.random(),
+            ad: seciliUrun.ad + detayMetni,
+            fiyat: guncelModalFiyati
+        });
+        
+        sepetiGuncelle();
+        
+        // Modalı Kapat, Sepet Yan Menüsünü Aç
+        bootstrap.Modal.getInstance(document.getElementById('ozellestirmeModali')).hide();
+        bootstrap.Offcanvas.getOrCreateInstance(document.getElementById('sepetim')).show();
+    };
+
+    function urunSil(id) {
+        sepet = sepet.filter(i => i.id !== id);
+        sepetiGuncelle();
+    }
+
+    function kuponUygula() {
+        if(document.getElementById('kupon-input').value.toUpperCase() === "LEZZET20") {
+            indirimOrani = 0.20;
+            document.getElementById('kupon-mesaj').classList.remove('d-none');
+            sepetiGuncelle();
+        } else { alert("Geçersiz Kupon!"); }
+    }
+
+    function sepetiGuncelle() {
+        const liste = document.getElementById('sepet-icerik');
+        const toplamEtiket = document.getElementById('toplam-tutar');
+        liste.innerHTML = '';
+        let araToplam = 0;
+        
+        sepet.forEach(item => {
+            araToplam += item.fiyat;
+            liste.innerHTML += `
+                <li class="list-group-item d-flex justify-content-between align-items-center bg-transparent px-0 border-0 mb-3">
+                    <div style="max-width: 85%;">
+                        <div class="fw-bold text-dark text-wrap">${item.ad}</div>
+                        <small class="text-muted fw-semibold">${item.fiyat} TL</small>
+                    </div>
+                    <i class="fas fa-trash-can delete-btn" onclick="urunSil(${item.id})"></i>
+                </li>`;
+        });
+        
+        let finalTutar = araToplam - (araToplam * indirimOrani);
+        document.getElementById('sepet-sayaci').innerText = sepet.length;
+        toplamEtiket.innerText = finalTutar.toFixed(2) + " TL";
+        document.getElementById('sepet-bos-mesaj').classList.toggle('d-none', sepet.length > 0);
+    }
+
+    // İlk Yüklemeler
+    urunleriYukle(burgerler, 'burger-listesi');
+    urunleriYukle(pizzalar, 'pizza-listesi');
+    urunleriYukle(icecekler, 'icecek-listesi');
+    urunleriYukle(tatlilar, 'tatli-listesi');
+</script>
+</body>
+</html>
